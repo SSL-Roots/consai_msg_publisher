@@ -25,7 +25,8 @@
 namespace key_input
 {
 
-int getch() {
+int getch()
+{
   // Ref: https://github.com/rt-net/rt_manipulators_cpp/blob/v1.1.2/samples/samples03/src/x7_gravity_compensation.cpp
   struct termios oldt, newt;
   int ch;
@@ -38,7 +39,8 @@ int getch() {
   return ch;
 }
 
-int kbhit(void) {
+int kbhit(void)
+{
   // Ref: https://github.com/rt-net/rt_manipulators_cpp/blob/v1.1.2/samples/samples03/src/x7_gravity_compensation.cpp
   struct termios oldt, newt;
   int ch;

@@ -17,6 +17,7 @@
 #include <functional>
 #include <memory>
 #include <string>
+#include <vector>
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
@@ -25,22 +26,21 @@
 #include "consai_msg_publisher/key_input.hpp"
 
 using namespace std::chrono_literals;
-using namespace consai_frootspi_msgs::msg;
+using RobotCommand = consai_frootspi_msgs::msg::RobotCommand;
 
 
 class MinimalPublisher : public rclcpp::Node
 {
+  constexpr static int MAX_ROBOT_ID = 15;
+  constexpr static double MAX_VELOCITY_XY = 2.0;
+  constexpr static double ADD_VELOCITY_XY = 0.1;
+  constexpr static double MAX_VELOCITY_THETA = 2.0 * M_PI;
+  constexpr static double ADD_VELOCITY_THETA = 0.1 * M_PI;
+  constexpr static double MAX_KICK_POWER = 8.0;  // m/s
+  constexpr static double MAX_DRIBBLE_POWER = 1.0;  // 0.0 ~ 1.0
 
-constexpr static int MAX_ROBOT_ID = 15;
-constexpr static double MAX_VELOCITY_XY = 2.0;
-constexpr static double ADD_VELOCITY_XY = 0.1;
-constexpr static double MAX_VELOCITY_THETA = 2.0 * M_PI;
-constexpr static double ADD_VELOCITY_THETA = 0.1 * M_PI;
-constexpr static double MAX_KICK_POWER = 8.0;  // m/s
-constexpr static double MAX_DRIBBLE_POWER = 1.0;  // 0.0 ~ 1.0
-
-// Ref: https://www.k-cube.co.jp/wakaba/server/ascii_code.html
-constexpr static int ESC_ASCII_VALUE = 0x1b;
+  // Ref: https://www.k-cube.co.jp/wakaba/server/ascii_code.html
+  constexpr static int ESC_ASCII_VALUE = 0x1b;
 
 public:
   MinimalPublisher()
