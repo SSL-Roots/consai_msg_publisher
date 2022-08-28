@@ -5,12 +5,12 @@ on:
     paths-ignore:
       - 'docs/**'
       - '**.md'
-      - 'build_docker_image.yaml'
+      - '**/build_docker_image.yaml'
   pull_request:
     paths-ignore:
       - 'docs/**'
       - '**.md'
-      - 'build_docker_image.yaml'
+      - '**/build_docker_image.yaml'
 
 env:
   UPSTREAM_WORKSPACE: .ci.rosinstall
