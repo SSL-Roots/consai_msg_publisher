@@ -5,7 +5,13 @@
 
 このパッケージは、consai_ros2やconsai_frootspi_msgsのメッセージをpublishするノードで構成されています。
 
-## Installation
+## Docker
+
+```sh
+$ docker pull ghcr.io/ssl-roots/consai_msg_publisher:foxy
+```
+
+## Source build
 
 ```sh
 $ cd ~/ros2_ws/src
@@ -28,8 +34,10 @@ consai_frootspi_msgsのRobotCommandメッセージをパブリッシュします
 トピック名は`/robot*/command`です
 
 ```sh
-$ ros2 run consai_msg_publisher robot_command_publisher 
+docker run -it --rm ghcr.io/ssl-roots/consai_msg_publisher:foxy ros2 run consai_msg_publisher robot_command_publisher 
+```
 
+```sh
 Esc: トピックを初期化
 p: トピックPublishのON/OFF (現在:1
 q/z: ロボットIDの増減 (現在:0
