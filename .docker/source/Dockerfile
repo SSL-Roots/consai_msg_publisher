@@ -1,5 +1,5 @@
 ARG ROS_DISTRO="foxy"
-FROM osrf/ros:${ROS_DISTRO}-desktop
+FROM ros:${ROS_DISTRO}
 ENV OVERLAY_WS /root/overlay_ws
 WORKDIR $OVERLAY_WS/src
 
